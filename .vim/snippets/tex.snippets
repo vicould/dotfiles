@@ -1,0 +1,23 @@
+snippet header
+	\documentclass{${1:class}}
+	\usepackage[T1]{fontenc}
+	\usepackage[utf8]{inputenc}
+	\usepackage[]{geometry}
+	
+	\usepackage[pdftex]{hyperref}
+	\hypersetup{
+	    pdftitle=[${2:title}]
+	    pdfauthor=[${3:author}]
+	    pdfpagemode=UseNone,
+	    pdfstartview=FitH,
+	    pdfkeywords={LaTeX: document typesetting system},
+	    breaklinks=true,
+	    colorlinks=true,
+	    linkcolor=black,
+	    citecolor=black,
+	    filecolor=black,
+	    urlcolor=blue
+	}
+
+	\title{$2}
+	\author{$3}

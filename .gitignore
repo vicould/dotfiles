@@ -1,0 +1,46 @@
+# default is to ignore all
+*
+
+!.gitignore
+
+# adds the configuration files tool by tool
+
+# Vim
+!.vimrc
+!.gvimrc
+!.vim
+
+# my vim files
+!.vim/filetype.vim
+!.vim/ftplugin
+!.vim/colors
+!.vim/colors/slate-mod.vim
+!.vim/colors/slate.vim
+!.vim/filetype.vim
+!.vim/ftdetect
+!.vim/ftdetect/json.vim
+!.vim/ftplugin/
+!.vim/ftplugin/tex.vim
+!.vim/indent
+!.vim/indent/html.vim
+!.vim/indent/python.vim
+!.vim/snippets
+!.vim/snippets/html.snippets
+!.vim/snippets/htmldjango.snippets
+!.vim/snippets/python.snippets
+!.vim/snippets/tex.snippets
+!.vim/syntax
+!.vim/syntax/python.vim
+!.vim/syntax/python3.0.vim
+
+# ignores the plugins in bundle
+.vim/bundle/*
+
+# Jshint
+!.jshintrc
+
+# zsh
+!.zshrc
+!.zsh/*
+
+
