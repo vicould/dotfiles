@@ -119,6 +119,7 @@ augroup python_autocmd
 	autocmd FileType python set softtabstop=4
 augroup END
 
+
 " Reopen the file where left
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -135,6 +136,8 @@ let g:Tex_ViewRule_pdf = 'Preview'
 " Use the ctags database when editing a file
 set tags=./tags,~/.vimtags
 
+" delimitMate
+let delimitMate_excluded_ft = "tex"
 " allows docstrings for python (triple quotes nesting)
 autocmd FileType python let b:delimitMate_nesting_quotes=['"']
 

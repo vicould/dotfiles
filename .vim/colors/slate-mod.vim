@@ -71,6 +71,16 @@ hi PmenuThumb	guifg=#F8F8F8	guibg=#8A95A7	gui=NONE		ctermfg=lightgray	ctermbg=da
 
 hi Folded		guifg=#000000 	guibg=darkgray					ctermfg=white		ctermbg=darkgray
 
+" Spell checking
+hi clear SpellBad
+hi SpellBad gui=undercurl guisp=red cterm=undercurl ctermfg=red  cterm=undercurl term=underline
+hi clear SpellCap
+hi SpellCap term=underline cterm=underline
+hi clear SpellRare
+hi SpellRare gui=undercurl guisp=blue cterm=undercurl ctermfg=blue  cterm=undercurl term=underline
+hi clear SpellLocal
+hi SpellLocal term=underline cterm=underline
+
 " Syntax highlighting
 hi Comment		guifg=#2C9ADE					gui=italic		ctermfg=darkblue
 hi String		guifg=#7CDE53									ctermfg=darkgreen
@@ -173,13 +183,5 @@ hi link cssValueNumber		Type
 hi link cssValueLength		Type
 hi cssPseudoClassId			guifg=#eceb00 ctermfg=darkyellow
 
-hi clear SpellBad
-hi SpellBad ctermfg=red term=underline cterm=underline
-hi clear SpellCap
-hi SpellCap term=underline cterm=underline
-hi clear SpellRare
-hi SpellRare term=underline cterm=underline
-hi clear SpellLocal
-hi SpellLocal term=underline cterm=underline
 
 " vim:noet:sw=4:ts=4:ft=vim
