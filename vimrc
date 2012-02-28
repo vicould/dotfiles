@@ -109,28 +109,9 @@ map <F5> :tabn<CR>
 
 " filetypes
 autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
-augroup json_autocmd 
-	autocmd! 
-	autocmd filetype json set autoindent 
-	autocmd filetype json set formatoptions=tcq2l 
-	autocmd filetype json set textwidth=78 shiftwidth=2 
-	autocmd filetype json set softtabstop=2 tabstop=8 
-	autocmd filetype json set expandtab 
-	autocmd filetype json set foldmethod=syntax 
-augroup END 
-
 autocmd FileType c,cpp,slang set cindent
 autocmd FileType make set noexpandtab shiftwidth=8
 autocmd FileType html,htmldjango,htmldjango.html set tabstop=2|set shiftwidth=2|set expandtab|set softtabstop=2
-
-augroup python_autocmd
-	autocmd!
-	autocmd FileType python set tabstop=4
-	autocmd FileType python set shiftwidth=4
-	autocmd FileType python set expandtab
-	autocmd FileType python set softtabstop=4
-augroup END
-
 
 " Reopen the file where left
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
