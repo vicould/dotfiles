@@ -1,0 +1,11 @@
+{
+	"bitwise": true,
+	"curly": true,
+	"eqeqeq": true,
+	"latedef": true,
+	"undef": true,
+	"trailing": true,
+	"jquery": true,
+	"browser": true
+}
+
