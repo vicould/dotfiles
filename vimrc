@@ -108,7 +108,7 @@ map <F4> :tabnew<CR>
 map <F5> :tabn<CR>
 
 " filetypes
-autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType c,cpp,slang set cindent
 autocmd FileType make set noexpandtab shiftwidth=8
 autocmd FileType html,htmldjango,htmldjango.html set tabstop=2|set shiftwidth=2|set expandtab|set softtabstop=2
