@@ -15,12 +15,13 @@ set wildignore=*.o,*.a,*.so,*.class,*.pyc,*.tar,*.zip,*.gz,*.bz2
 set showmode
 set ruler
 
+" completion
+set completeopt=menuone,preview
+
 
 " better search
 set incsearch
 set hlsearch
-set ignorecase  " Ignore the case
-set smartcase   " Only if the search pattern is not cased
 
 " keep the cursor on the same column when changing line
 set nostartofline
@@ -107,12 +108,6 @@ map <F3> :tabp<CR>
 map <F4> :tabnew<CR>
 map <F5> :tabn<CR>
 
-" filetypes
-autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType c,cpp,slang set cindent
-autocmd FileType make set noexpandtab shiftwidth=8
-autocmd FileType html,htmldjango,htmldjango.html set tabstop=2|set shiftwidth=2|set expandtab|set softtabstop=2
-
 " Reopen the file where left
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -152,5 +147,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
 			\ 'active_filetypes': ['python', 'sh', 'javascript'],
 			\ 'passive_filetypes': ['c', 'objc', 'java']}
 let g:syntastic_javascript_checker='jshint'
+let g:syntastic_python_checker='pylint'
 
 
