@@ -13,6 +13,10 @@ if [ -d /usr/local/bin ]; then
 	export PATH=/usr/local/bin:$PATH
 fi
 
+if [ -d /usr/local/sbin ]; then
+	export PATH=/usr/local/sbin:$PATH
+fi
+
 if [ -d /usr/local/share/python ]; then
 	export PATH=/usr/local/share/python:$PATH
 fi
@@ -21,6 +25,9 @@ if [ -d /usr/local/node_modules/.bin  ]; then
 	export PATH=/usr/local/node_modules/.bin:$PATH
 fi
 
+if [ -d /usr/texbin  ]; then
+	export PATH=/usr/texbin:$PATH
+fi
 
 if [ -d ~/utils/bin ]; then
 	export PATH=~/utils/bin:$PATH
