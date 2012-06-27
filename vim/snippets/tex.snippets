@@ -28,3 +28,12 @@ snippet lst
 	\begin{lstlisting}[caption={${1:caption}},label={lst:${2:label}}]
 	${3}	
 	\end{lstlisting}
+snippet fig
+	\begin{figure}
+	  \begin{center}
+	    \includegraphics[scale=${2:0.5}]{${1:file_name}}
+	  \end{center}
+	  \caption{${3:caption_text}}
+	  \label{fig:${4:label_text}}
+	\end{figure}
+
