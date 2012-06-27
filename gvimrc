@@ -1,7 +1,14 @@
 source ~/.vimrc
 
 " macvim tweaks
-set go-=T
+set guioptions-=T
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+
+autocmd VimLeave * maca hide:
+
 set lines=60 
 set columns=160
 
