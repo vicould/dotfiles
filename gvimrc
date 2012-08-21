@@ -39,5 +39,6 @@ syntax enable
 colorscheme slate-mod
 set guifont=Monaco
 
-
+nnoremap <leader>tl :execute 'silent! tabmove ' (tabpagenr() - 2)<CR>
+nnoremap <leader>tr :execute 'silent! tabmove ' tabpagenr()<CR>
 

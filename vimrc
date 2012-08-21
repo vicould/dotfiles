@@ -73,40 +73,37 @@ vnoremap < <gv
 vnoremap > >gv
 
 " indentation shortcut
-noremap ,= gg=G
+noremap <leader>= gg=G
 
 " nerdtree
-noremap ,n :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR>
 
 " tagbar
-nmap ,t :TagbarToggle<CR>
+nmap <leader>tt :TagbarToggle<CR>
 
 " fugitive
-map ,gs :Gstatus<CR>
-map ,gd :Gdiff<CR>
-map ,gc :Gcommit<CR>
-map ,gc :Gpush<CR>
+map <leader>gs :Gstatus<CR>
+map <leader>gd :Gdiff<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gc :Gpush<CR>
 
 " Fuzzyfinder
-map ,ff :FufFile<CR>
-map ,fb :FufBuffer<CR>
+map <leader>ff :FufFile<CR>
+map <leader>fb :FufBuffer<CR>
 
 " FSSwitch
-noremap ,sl :FSSplitLeft<CR>
-noremap ,sr :FSSplitRight<CR>
-noremap ,sa :FSSplitAbove<CR>
-noremap ,sb :FSSplitBelow<CR>
-noremap ,sh :FSHere<CR>
+noremap <leader>sl :FSSplitLeft<CR>
+noremap <leader>sr :FSSplitRight<CR>
+noremap <leader>sa :FSSplitAbove<CR>
+noremap <leader>sb :FSSplitBelow<CR>
+noremap <leader>sh :FSHere<CR>
 
 " vimrc modification
-map ,v :sp ~/.vimrc
-map <silent> ,V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+map <leader>v :sp ~/.vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:source ~/.gvimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 map <F1> :set nu!<CR>:set nu?<CR>
 map <F2> :nohl<CR>
-map <F3> :tabp<CR>
-map <F4> :tabnew<CR>
-map <F5> :tabn<CR>
 
 " Reopen the file where left
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
