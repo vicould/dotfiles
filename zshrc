@@ -1,9 +1,3 @@
-#PROMPT=$'%{\e[0;32m%}%n%{\e[0;30m%}@%{\e[0;36m%}%m %{\e[0;32m%}%~%{\e[1;00m%}
-#'
-#RPROMPT=$'%{\e[0;33m%}%t %{\e[1;31m%}%?%{\e[1;00m%}'
-#RPROMPT=$'%{\e[1;31m%}%?%{\e[1;00m%}'
-#PROMPT2='%_> '
-
 # vars
 HISTFILE=~/.zshhistory
 HISTSIZE=1000
@@ -15,6 +9,10 @@ fi
 
 if [ -d /usr/local/sbin ]; then
 	export PATH=/usr/local/sbin:$PATH
+fi
+
+if [ -d /usr/local/mysql/bin ]; then
+    export PATH=/usr/local/mysql/bin:$PATH
 fi
 
 if [ -d /usr/local/share/python ]; then
@@ -33,20 +31,9 @@ if [ -d ~/utils/bin ]; then
 	export PATH=~/utils/bin:$PATH
 fi
 
-if [ -d ~/utils/lib ]; then
-	export LIBPATH=~/utils/lib:$LIBPATH
+if [ -d ~/prog/lib/Java ]; then
+	export CLASSPATH=~/prog/lib/Java:$CLASSPATH
 fi
-if [ -d ~/utils/java_lib ]; then
-	export CLASSPATH=~/utils/java_lib:$CLASSPATH
-fi
-if [ -f ~/utils/java_lib/access/lib/Access_JDBC40.jar ]; then
-	export CLASSPATH=~/utils/java_lib/access/lib/Access_JDBC40.jar:$CLASSPATH
-fi
-
-if [ -d /Applications/GoogleAppEngineLauncher.app/Contents/Resources/GoogleAppEngine-default.bundle/Contents/Resources/google_appengine/ ]; then
-	export GAE_SDK_ROOT=/Applications/GoogleAppEngineLauncher.app/Contents/Resources/GoogleAppEngine-default.bundle/Contents/Resources/google_appengine/
-fi
-
 
 # various options, see man zshoptions
 setopt AUTO_CD
@@ -56,10 +43,6 @@ setopt PROMPT_SUBST
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
-
-PS1='%79>..>%{%F{red}%}%m%b%f%k%9(v. . %{%F{blue}%}%(?.[.%20(?.[%U.%S[))%7v%(?.].%20(?.%u].]%s))%b%f%k )%{%F{default}%}%4~%b%f%k%<<%8v%64(l. . %{%F{default}%}%D%b%f%k)%72(l.. %{%F{red}%}%@%b%f%k)%9(v.
-%{%F{blue}%}%(?.[.%20(?.[%U.%S[))%7v%(?.].%20(?.%u].]%s))%b%f%k.)
-%n%# '
 
 # homebrew stuff (completion), and adding functions to the path
 fpath=($HOME/.zsh/func $fpath)
