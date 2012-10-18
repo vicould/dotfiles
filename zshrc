@@ -3,37 +3,24 @@ HISTFILE=~/.zshhistory
 HISTSIZE=1000
 SAVEHIST=1000
 
-if [ -d /usr/local/bin ]; then
-	export PATH=/usr/local/bin:$PATH
-fi
+[[ -d /usr/local/bin ]] && export PATH=/usr/local/bin:$PATH
+[[ -d /usr/local/sbin ]] && export PATH=/usr/local/sbin:$PATH
 
-if [ -d /usr/local/sbin ]; then
-	export PATH=/usr/local/sbin:$PATH
-fi
+[[ -d /usr/local/mysql/bin ]] && export PATH=/usr/local/mysql/bin:$PATH
 
-if [ -d /usr/local/mysql/bin ]; then
-    export PATH=/usr/local/mysql/bin:$PATH
-fi
+[[ -d /usr/local/share/python ]] && export PATH=/usr/local/share/python:$PATH
 
-if [ -d /usr/local/share/python ]; then
-	export PATH=/usr/local/share/python:$PATH
-fi
+[[ -d /usr/local/node_modules/.bin  ]] && export PATH=/usr/local/node_modules/.bin:$PATH
 
-if [ -d /usr/local/node_modules/.bin  ]; then
-	export PATH=/usr/local/node_modules/.bin:$PATH
-fi
+[[ -d /usr/texbin  ]] && export PATH=/usr/texbin:$PATH
 
-if [ -d /usr/texbin  ]; then
-	export PATH=/usr/texbin:$PATH
-fi
+[[ -d ~/utils/bin ]] && export PATH=~/utils/bin:$PATH
 
-if [ -d ~/utils/bin ]; then
-	export PATH=~/utils/bin:$PATH
-fi
+[[ -d ~/prog/lib/Java ]] && export CLASSPATH=~/prog/lib/Java:$CLASSPATH
 
-if [ -d ~/prog/lib/Java ]; then
-	export CLASSPATH=~/prog/lib/Java:$CLASSPATH
-fi
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+export EDITOR='/usr/bin/vim'
 
 # various options, see man zshoptions
 setopt AUTO_CD
@@ -59,16 +46,16 @@ prompt bart-mod
 zstyle ':completion:*' menu select
 
 # key bindings
+bindkey "^A" beginning-of-line
 bindkey "\e[1~" beginning-of-line # Home
+bindkey "^E" end-of-line # End
 bindkey "\e[4~" end-of-line # End
 bindkey "\e[5~" beginning-of-history # PageUp
 bindkey "\e[6~" end-of-history # PageDown
 bindkey "\e[2~" quoted-insert # Ins
 bindkey "\e[3~" delete-char # Del
 bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
 bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 bindkey "\e[Z" reverse-menu-complete # Shift+Tab
@@ -113,5 +100,16 @@ alias u='cd .. && ls'
 alias dot='show_hidden.sh YES'
 alias nodot='show_hidden.sh NO'
 
-
+# colored man pages
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
 
