@@ -1,6 +1,9 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+"----------------------------------------------------------------
+" Basic stuff
+"----------------------------------------------------------------
 set nocompatible
 
 " error bells
@@ -8,6 +11,7 @@ set noerrorbells
 set visualbell
 set t_vb=		" visual bell without changing the color
 
+" completion of file names
 set wildmenu
 set wildmode=list:longest " longest:full
 set wildignore=*.o,*.a,*.so,*.class,*.pyc,*.tar,*.zip,*.gz,*.bz2
@@ -17,7 +21,6 @@ set ruler
 
 " completion
 set completeopt=menuone,preview
-
 
 " better search
 set incsearch
@@ -46,7 +49,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " colors
 if &t_Co >1
 	syntax enable
-	colorscheme default
+	colorscheme slate-mod
 endif
 
 " statusline
@@ -61,9 +64,14 @@ set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
 set statusline +=%2*0x%04B\ %*          "character under cursor
 
-""""""""""""
-" Mappings "
-""""""""""""
+" Reopen the file where left
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+filetype plugin indent on
+
+"----------------------------------------------------------------
+" Mappings
+"----------------------------------------------------------------
 
 " sets the leader key, i.e. the modifier
 let mapleader = ","
@@ -72,8 +80,21 @@ let mapleader = ","
 vnoremap < <gv 
 vnoremap > >gv
 
+" tabs
+nnoremap <leader>l :tabp<CR>
+nnoremap <leader>r :tabn<CR>
+nnoremap <leader>tl :execute 'silent! tabmove ' (tabpagenr() - 2)<CR>
+nnoremap <leader>tr :execute 'silent! tabmove ' tabpagenr()<CR>
+
 " indentation shortcut
 noremap <leader>= gg=G
+
+" vimrc modification
+map <leader>v :sp ~/.vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:source ~/.gvimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+map <F1> :set nu!<CR>:set nu?<CR>
+map <F2> :nohl<CR>
 
 " nerdtree
 noremap <leader>n :NERDTreeToggle<CR>
@@ -98,21 +119,14 @@ noremap <leader>sa :FSSplitAbove<CR>
 noremap <leader>sb :FSSplitBelow<CR>
 noremap <leader>sh :FSHere<CR>
 
-" vimrc modification
-map <leader>v :sp ~/.vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:source ~/.gvimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" Syntastic
+noremap <leader>sc :SyntasticCheck<CR>
+noremap <leader>st :SyntasticToggleMode<CR>
 
-map <F1> :set nu!<CR>:set nu?<CR>
-map <F2> :nohl<CR>
 
-" Reopen the file where left
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-filetype plugin indent on
-
-"""""""""""
-" PLUGINS "
-"""""""""""
+"----------------------------------------------------------------
+" Plugins
+"----------------------------------------------------------------
 
 " latex
 let g:tex_flavor='latex'
@@ -140,9 +154,9 @@ let g:tagbar_sort = 0
 
 " syntastic
 let g:syntastic_enable_signs=1
-let g:syntastic_mode_map = { 'mode': 'active',
-			\ 'active_filetypes': ['python', 'sh', 'javascript'],
-			\ 'passive_filetypes': ['c', 'objc', 'java']}
+let g:syntastic_mode_map = { 'mode': 'passive',
+			\ 'active_filetypes': ['sh', 'javascript'],
+			\ 'passive_filetypes': ['python', 'c', 'objc', 'java']}
 let g:syntastic_javascript_checker='jshint'
 let g:syntastic_python_checker='pylint'
 
