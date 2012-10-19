@@ -1,29 +1,43 @@
-# vars
+#------------------------
+# Vars
+#------------------------
+#
 HISTFILE=~/.zshhistory
 HISTSIZE=1000
 SAVEHIST=1000
 
+
+#------------------------
+# Path
+#------------------------
+
 [[ -d /usr/local/bin ]] && export PATH=/usr/local/bin:$PATH
 [[ -d /usr/local/sbin ]] && export PATH=/usr/local/sbin:$PATH
-
 [[ -d /usr/local/mysql/bin ]] && export PATH=/usr/local/mysql/bin:$PATH
-
 [[ -d /usr/local/share/python ]] && export PATH=/usr/local/share/python:$PATH
-
 [[ -d /usr/local/node_modules/.bin  ]] && export PATH=/usr/local/node_modules/.bin:$PATH
-
 [[ -d /usr/texbin  ]] && export PATH=/usr/texbin:$PATH
-
 [[ -d ~/utils/bin ]] && export PATH=~/utils/bin:$PATH
-
 [[ -d ~/prog/lib/Java ]] && export CLASSPATH=~/prog/lib/Java:$CLASSPATH
-
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-export EDITOR='/usr/bin/vim'
 
-# various options, see man zshoptions
-setopt AUTO_CD
+#------------------------
+# Aliases
+#------------------------
+
+alias ls='ls -FGH'
+alias u='cd .. && ls'
+
+# show hidden files
+alias dot='show_hidden.sh YES'
+alias nodot='show_hidden.sh NO'
+
+
+#------------------------
+# Options
+#------------------------
+
 setopt CORRECT
 setopt NOCLOBBER
 setopt PROMPT_SUBST
@@ -32,7 +46,7 @@ setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 
 # homebrew stuff (completion), and adding functions to the path
-fpath=($HOME/.zsh/func $fpath)
+fpath=($HOME/.zsh/func /usr/local/share/zsh-completions $fpath)
 typeset -U fpath
 
 # compinit initializes various advanced completions for zsh
@@ -40,38 +54,36 @@ autoload -U compinit promptinit colors
 compinit -u
 promptinit
 colors
-prompt bart-mod
+bindkey -e
+
+setprompt () {
+    PROMPT="%F{green}%n%f %(!.%F{red}#%f.%%) "
+    RPROMPT="%(?..%F{red}[%?]%f )%21<...<%3~ %F{cyan}%T%f"
+}
+setprompt
 
 # completion styles
 zstyle ':completion:*' menu select
 
-# key bindings
-bindkey "^A" beginning-of-line
+
+#------------------------
+# Key bindings
+#------------------------
+
 bindkey "\e[1~" beginning-of-line # Home
-bindkey "^E" end-of-line # End
 bindkey "\e[4~" end-of-line # End
 bindkey "\e[5~" beginning-of-history # PageUp
 bindkey "\e[6~" end-of-history # PageDown
 bindkey "\e[2~" quoted-insert # Ins
 bindkey "\e[3~" delete-char # Del
-bindkey "\e[5C" forward-word
-bindkey "\e[5D" backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
 bindkey "\e[Z" reverse-menu-complete # Shift+Tab
-# for rxvt
-bindkey "\e[7~" beginning-of-line # Home
-bindkey "\e[8~" end-of-line # End
-# # for non RH/Debian xterm, can't hurt for RH/Debian xterm
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
-# # for freebsd console
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
-
-# history
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
+
+
+#------------------------
+# Macros
+#------------------------
 
 # rename current path
 namedir() { export $1=$PWD ; : ~$1 }
@@ -91,14 +103,6 @@ if [ "$TERM_PROGRAM" = "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
 	add-zsh-hook chpwd update_terminal_cwd
 	update_terminal_cwd
 fi
-
-# aliases
-alias ls='ls -FGH'
-alias u='cd .. && ls'
-
-# show hidden files
-alias dot='show_hidden.sh YES'
-alias nodot='show_hidden.sh NO'
 
 # colored man pages
 man() {
