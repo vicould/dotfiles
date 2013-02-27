@@ -27,6 +27,7 @@ SAVEHIST=1000
 #------------------------
 
 alias ls='ls -FGH'
+alias ll='ls -l'
 alias u='cd .. && ls'
 
 # show hidden files
@@ -57,7 +58,7 @@ colors
 bindkey -e
 
 setprompt () {
-    PROMPT="%F{green}%n%f %(!.%F{red}#%f.%%) "
+    PROMPT="%F{green}%m%f %(!.%F{red}#%f.%%) "
     RPROMPT="%(?..%F{red}[%?]%f )%21<...<%3~ %F{cyan}%T%f"
 }
 setprompt
