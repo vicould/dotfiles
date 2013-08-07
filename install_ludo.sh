@@ -12,8 +12,7 @@ function dotfiles() {
 	then
 		mkdir ~/Documents/geek
 		cd ~/Documents/geek
-		git clone https://github.com/vicould/dotfiles
-
+		git clone https://github.siri.apple.com/ldelaveau/dotfiles
 	fi
 	ln dotfiles/zshrc ~/.zshrc
 	ln dotfiles/vimrc ~/.vimrc
