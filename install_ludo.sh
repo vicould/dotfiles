@@ -5,6 +5,7 @@ function allTheWay() {
 	vim
 	homebrew
 	shell
+	prepare_git
 }
 
 function dotfiles() {
@@ -47,6 +48,11 @@ function homebrew() {
 
 function shell() {
 	chsh -s /bin/zsh ludo
+}
+
+function prepare_git() {
+	git config --global user.email ldelaveau@apple.com
+	git config --global user.name "Ludovic Delaveau"
 }
 
 allTheWay
