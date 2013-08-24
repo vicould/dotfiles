@@ -39,6 +39,7 @@ function vim() {
 	git clone https://github.com/scrooloose/syntastic.git
 	git clone https://github.cocoamm/vim-scripts/CSApprox.git
 	hg clone https://bitbucket.org/ns9tks/vim-l9 
+	git clone https://github.com/majutsushi/tagbar.git
 }
 
 function homebrew() {
