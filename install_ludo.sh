@@ -46,18 +46,24 @@ function vim() {
     cp -R ~/projects/geek/dotfiles/vim/* ~/.vim
     mkdir bundle
     cd bundle
-    git clone https://github.com/tpope/vim-pathogen.git
     git clone git://github.com/Raimondi/delimitMate.git
     git clone git://github.com/scrooloose/nerdcommenter.git
     git clone git://github.com/scrooloose/nerdtree.git
     git clone git://github.com/vim-scripts/FuzzyFinder.git
+    git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
     git clone https://github.com/ervandew/supertab.git
+    git clone https://github.com/garbas/vim-snipmate.git
+    git clone https://github.com/honza/vim-snippets.git
+    git clone https://github.com/majutsushi/tagbar.git
     git clone https://github.com/msanders/cocoa.vim.git
-    git clone https://github.com/msanders/snipmate.vim.git
     git clone https://github.com/robhudson/snipmate_for_django.git
     git clone https://github.com/scrooloose/syntastic.git
-    git clone https://github.cocoamm/vim-scripts/CSApprox.git
-    git clone https://github.com/majutsushi/tagbar.git
+    git clone https://github.com/tomtom/tlib_vim.git
+    git clone https://github.com/tpope/vim-fugitive.git
+    git clone https://github.com/tpope/vim-pathogen.git
+    git clone https://github.com/xolox/vim-easytags.git
+    git clone https://github.com/xolox/vim-misc.git
+    git clone https://github.com/vim-scripts/CSApprox.git
     hg clone https://bitbucket.org/ns9tks/vim-l9 
 }
 
