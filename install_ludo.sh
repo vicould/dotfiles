@@ -8,7 +8,7 @@ function getargs() {
             case $options in
                 a ) allTheWay;;
                 d ) dotfiles;;
-        g ) prepare_git;;
+		g ) prepare_git;;
                 h ) homebrew;;
                 s ) shell;;
                 p ) pip_packages;;
@@ -63,13 +63,14 @@ function vim() {
     git clone https://github.com/tpope/vim-pathogen.git
     git clone https://github.com/xolox/vim-easytags.git
     git clone https://github.com/xolox/vim-misc.git
-    git clone https://github.com/vim-scripts/CSApprox.git
     hg clone https://bitbucket.org/ns9tks/vim-l9 
 }
 
 function homebrew() {
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
     brew install tmux reattach-to-user-namespace wget ctags python vim macvim
+    mkdir -p ~/.zsh/func
+    ln -s "$(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh" ~/.zsh/func/_brew
 }
 
 function shell() {
