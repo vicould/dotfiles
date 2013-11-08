@@ -20,6 +20,10 @@ SAVEHIST=1000
 [[ -d ~/utils/bin ]] && export PATH=~/utils/bin:$PATH
 [[ -d ~/prog/lib/Java ]] && export CLASSPATH=~/prog/lib/Java:$CLASSPATH
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+# postgres app
+[[ -d /Applications/Postgres.app/Contents/MacOs/bin ]] && export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+
+eval "$(rbenv init -)"
 
 
 #------------------------
@@ -49,6 +53,9 @@ setopt SHARE_HISTORY
 # homebrew stuff (completion), and adding functions to the path
 fpath=($HOME/.zsh/func /usr/local/share/zsh-completions $fpath)
 typeset -U fpath
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # compinit initializes various advanced completions for zsh
 autoload -U compinit promptinit colors
