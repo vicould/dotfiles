@@ -33,6 +33,7 @@ eval "$(rbenv init -)"
 alias ls='ls -FGH'
 alias ll='ls -l'
 alias u='cd .. && ls'
+alias wow='git status'
 
 # show hidden files
 alias dot='show_hidden.sh YES'
