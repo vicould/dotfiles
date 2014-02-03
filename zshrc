@@ -21,7 +21,7 @@ SAVEHIST=5000
 [[ -d ~/prog/lib/Java ]] && export CLASSPATH=~/prog/lib/Java:$CLASSPATH
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 # postgres app
-[[ -d /Applications/Postgres.app/Contents/MacOs/bin ]] && export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+[[ -d /Applications/Postgres93.app/Contents/MacOs/bin ]] && export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 
 eval "$(rbenv init -)"
 
