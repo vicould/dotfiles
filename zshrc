@@ -65,9 +65,13 @@ promptinit
 colors
 bindkey -e
 
+branch_prompt () {
+    git branch &>/dev/null && echo "[`git branch |grep \"*\" |sed \"s/* //g\"`] "
+}
+
 setprompt () {
     PROMPT="%F{green}%m%f %(!.%F{red}#%f.%%) "
-    RPROMPT="%(?..%F{red}[%?]%f )%21<...<%3~ %F{cyan}%T%f"
+    RPROMPT='%(?..%F{red}[%?]%f )%F{magenta}$(branch_prompt)%f%21<...<%3~ %F{cyan}%T%f'
 }
 setprompt
 
