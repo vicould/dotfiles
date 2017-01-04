@@ -5,26 +5,35 @@
 HISTFILE=~/.zshhistory
 HISTSIZE=5000
 SAVEHIST=5000
+if [[ -x /usr/local/bin/vim ]]; then
+	export EDITOR="/usr/local/bin/vim"
+else
+	export EDITOR="/usr/bin/vim"
+fi
 
 
 #------------------------
 # Path
 #------------------------
 
-[[ -d /usr/local/bin ]] && export PATH=/usr/local/bin:$PATH
-[[ -d /usr/local/sbin ]] && export PATH=/usr/local/sbin:$PATH
-[[ -d /usr/local/mysql/bin ]] && export PATH=/usr/local/mysql/bin:$PATH
-[[ -d /usr/local/share/python ]] && export PATH=/usr/local/share/python:$PATH
-[[ -d /usr/local/node_modules/.bin  ]] && export PATH=/usr/local/node_modules/.bin:$PATH
-[[ -d /usr/texbin  ]] && export PATH=/usr/texbin:$PATH
+[[ -d ~/projects/brew/bin ]] && export PATH=~/projects/brew/bin:$PATH
 [[ -d ~/utils/bin ]] && export PATH=~/utils/bin:$PATH
-[[ -d ~/prog/lib/Java ]] && export CLASSPATH=~/prog/lib/Java:$CLASSPATH
+[[ -d ~/bin ]] && export PATH=~/bin:$PATH
+[[ -d ~/projects/pot_pourri/bin ]] && export PATH=~/projects/pot_pourri/bin:$PATH
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-# postgres app
-[[ -d /Applications/Postgres93.app/Contents/MacOs/bin ]] && export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+[[ -d ~/.cabal ]] && export PATH=~/.cabal/bin:$PATH 
 
-eval "$(rbenv init -)"
+# ruby
+[[ -x /usr/local/bin/rbenv ]] && eval "$(rbenv init -)"
 
+# go
+[[ -d ~/projects/gocode ]] && export GOPATH=~/projects/gocode && export PATH=~/projects/gocode/bin:$PATH
+
+# python
+export PROJECT_HOME=~/envs
+[[ -x `brew --prefix`/bin/virtualenvwrapper.sh ]] && source `brew --prefix`/bin/virtualenvwrapper.sh
+[[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+[[ -d ~/projects/pot_pourri ]] && export PYTHONPATH=~/projects/pot_pourri:$PYTHONPATH
 
 #------------------------
 # Aliases
@@ -39,6 +48,14 @@ alias wow='git status'
 alias dot='show_hidden.sh YES'
 alias nodot='show_hidden.sh NO'
 
+# merde !
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+
+alias cleanvim='vim -u NONE -N'
+
+alias gotestcover='GOPATH=${PWD}:${PWD}/_vendor go test -covermode=count -coverprofile=coverage.out'
+alias gotest='GOPATH=${PWD}:${PWD}/_vendor go test'
+alias gocover='GOPATH=${PWD}:${PWD} go tool cover -html=coverage.out'
 
 #------------------------
 # Options
@@ -52,7 +69,7 @@ setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 
 # homebrew stuff (completion), and adding functions to the path
-fpath=($HOME/.zsh/func /usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh/functions /usr/local/share/zsh/site-functions $fpath)
 typeset -U fpath
 
 # rbenv
@@ -129,4 +146,3 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
 }
-

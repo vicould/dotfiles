@@ -1,0 +1,9 @@
+[user]
+	name = Ludovic Delaveau
+	email = ldelaveau@apple.com
+[push]
+	default = simple
+[core]
+	editor = /usr/bin/vim
+[hub]
+	host = github.siri.apple.com
